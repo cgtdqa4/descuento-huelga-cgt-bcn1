@@ -164,6 +164,9 @@
                                     <option value="6">Semana Solape / Peak (6 días trabajo / 1 descanso) [x1.17]</option>
                                 </select>
                             </div>
+                            <p class="text-[11px] text-gray-400 mt-1.5">
+                                Selecciona cuántos días ibas a trabajar en la semana concreta de la huelga.
+                            </p>
                         </div>
 
                         <div>
@@ -185,7 +188,7 @@
                                 <span>Prorrateo de Descanso Semanal</span>
                             </div>
                             <p class="text-gray-400 leading-relaxed">
-                                Cálculo ajustado de forma totalmente proporcional a tu jornada real de contrato y al régimen de días de la semana afectada.
+                                El Tribunal Supremo exige descontar la parte proporcional del descanso no generado ($7 \div \text{días trabajados}$). Esta calculadora lo aplica de forma automática.
                             </p>
                         </div>
                     </form>
@@ -235,19 +238,19 @@
             </div>
         </section>
 
-        <!-- SECTION 2: PREGUNTAS FRECUENTES Y DERECHOS -->
+        <!-- SECTION 2: PREGUNTAS FRECUENTES Y DERECHOS (10 FAQs) -->
         <section id="faq" class="scroll-mt-20">
             <div class="flex items-center space-x-3 mb-6">
                 <div class="p-2.5 bg-red-950/90 border border-red-800/80 rounded-xl text-red-500">
                     <i class="fa-solid fa-scale-balanced text-xl"></i>
                 </div>
                 <div>
-                    <h2 class="text-xl sm:text-2xl font-bold text-white">Guía de Derechos Laborales</h2>
+                    <h2 class="text-xl sm:text-2xl font-bold text-white">Guía de Derechos Laborales (FAQs)</h2>
                     <p class="text-xs text-gray-400">Aclara tus dudas legales sobre el ejercicio de tu derecho constitucional a huelga</p>
                 </div>
             </div>
 
-            <!-- Buscador -->
+            <!-- Buscador de FAQs -->
             <div class="mb-6 relative">
                 <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-red-500">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -256,27 +259,119 @@
                     class="w-full pl-10 pr-4 py-3 bg-gray-900 border border-gray-800 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-red-500 text-sm">
             </div>
 
-            <!-- Acordeón FAQ -->
+            <!-- Acordeón FAQ (10 Preguntas) -->
             <div class="space-y-3 sm:space-y-4" id="faqContainer">
+
+                <!-- FAQ 1 -->
                 <div class="faq-item bg-gray-900 border border-gray-800 rounded-xl overflow-hidden transition-colors">
                     <button class="w-full p-4 text-left font-semibold text-white flex justify-between items-center focus:outline-none text-sm sm:text-base gap-2 hover:text-red-400 transition-colors" onclick="toggleFaq(this)">
-                        <span>¿Se descuenta también la parte proporcional de la Paga Extra por hacer huelga?</span>
+                        <span>1. ¿Se descuenta también la parte proporcional de la Paga Extra por hacer huelga?</span>
                         <i class="fa-solid fa-chevron-down text-red-500 transition-transform flex-shrink-0"></i>
                     </button>
                     <div class="faq-answer hidden px-4 pb-4 text-xs sm:text-sm text-gray-300 border-t border-gray-800/60 pt-3 leading-relaxed">
-                        <strong>Sí, legalmente sí.</strong> El Tribunal Supremo establece que por cada día de huelga la empresa descuenta el salario base del día, la parte proporcional del descanso semanal y la parte proporcional de la paga extra. Nuestra calculadora ya lo tiene en cuenta.
+                        <strong>Sí, legalmente sí.</strong> El Tribunal Supremo establece que por cada día de huelga la empresa descuenta el salario base del día, la parte proporcional del descanso semanal y la parte proporcional de la paga extra. Nuestra calculadora ya lo tiene en cuenta al basarse en el SBA anual.
                     </div>
                 </div>
 
+                <!-- FAQ 2 -->
                 <div class="faq-item bg-gray-900 border border-gray-800 rounded-xl overflow-hidden transition-colors">
                     <button class="w-full p-4 text-left font-semibold text-white flex justify-between items-center focus:outline-none text-sm sm:text-base gap-2 hover:text-red-400 transition-colors" onclick="toggleFaq(this)">
-                        <span>¿Tengo obligación de avisar a la empresa con antelación si secundó la huelga?</span>
+                        <span>2. ¿Tengo obligación de avisar a la empresa con antelación si secundaré la huelga?</span>
                         <i class="fa-solid fa-chevron-down text-red-500 transition-transform flex-shrink-0"></i>
                     </button>
                     <div class="faq-answer hidden px-4 pb-4 text-xs sm:text-sm text-gray-300 border-t border-gray-800/60 pt-3 leading-relaxed">
-                        <strong>No.</strong> El ejercicio del derecho a huelga es individual y de carácter voluntario. No estás obligado a responder encuestas previas de los mandos.
+                        <strong>No.</strong> El ejercicio del derecho a huelga es individual y de carácter voluntario. No estás obligado a responder encuestas previas de los mandos ni a comunicar por adelantado si vas a parar.
                     </div>
                 </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item bg-gray-900 border border-gray-800 rounded-xl overflow-hidden transition-colors">
+                    <button class="w-full p-4 text-left font-semibold text-white flex justify-between items-center focus:outline-none text-sm sm:text-base gap-2 hover:text-red-400 transition-colors" onclick="toggleFaq(this)">
+                        <span>3. ¿Puedo secundar la huelga si estoy en periodo de prueba, ETT o contrato temporal?</span>
+                        <i class="fa-solid fa-chevron-down text-red-500 transition-transform flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer hidden px-4 pb-4 text-xs sm:text-sm text-gray-300 border-t border-gray-800/60 pt-3 leading-relaxed">
+                        <strong>Sí, rotundamente.</strong> El derecho constitucional a huelga ampara a toda la plantilla sin distinción por tipo de contrato, ETT o periodo de prueba. Tomar represalias, despedir o no renovar por hacer huelga es nulo de pleno derecho.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item bg-gray-900 border border-gray-800 rounded-xl overflow-hidden transition-colors">
+                    <button class="w-full p-4 text-left font-semibold text-white flex justify-between items-center focus:outline-none text-sm sm:text-base gap-2 hover:text-red-400 transition-colors" onclick="toggleFaq(this)">
+                        <span>4. ¿Pueden sancionarme o despedirme por hacer huelga?</span>
+                        <i class="fa-solid fa-chevron-down text-red-500 transition-transform flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer hidden px-4 pb-4 text-xs sm:text-sm text-gray-300 border-t border-gray-800/60 pt-3 leading-relaxed">
+                        <strong>No.</strong> La huelga es un derecho fundamental protegido por la Constitución. Cualquier sanción disciplinaria o despido motivado por secundarla es radicalmente nulo e ilegal.
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-item bg-gray-900 border border-gray-800 rounded-xl overflow-hidden transition-colors">
+                    <button class="w-full p-4 text-left font-semibold text-white flex justify-between items-center focus:outline-none text-sm sm:text-base gap-2 hover:text-red-400 transition-colors" onclick="toggleFaq(this)">
+                        <span>5. ¿Qué ocurre con la huelga si trabajo en el turno de noche en BCN1?</span>
+                        <i class="fa-solid fa-chevron-down text-red-500 transition-transform flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer hidden px-4 pb-4 text-xs sm:text-sm text-gray-300 border-t border-gray-800/60 pt-3 leading-relaxed">
+                        Para los turnos de noche que comienzan en la fecha de la convocatoria oficial de huelga, la jornada completa de trabajo queda amparada por el derecho de huelga desde el inicio del turno.
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="faq-item bg-gray-900 border border-gray-800 rounded-xl overflow-hidden transition-colors">
+                    <button class="w-full p-4 text-left font-semibold text-white flex justify-between items-center focus:outline-none text-sm sm:text-base gap-2 hover:text-red-400 transition-colors" onclick="toggleFaq(this)">
+                        <span>6. ¿Qué es el "esquirolaje" y qué hago si la empresa intenta sustituirme?</span>
+                        <i class="fa-solid fa-chevron-down text-red-500 transition-transform flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer hidden px-4 pb-4 text-xs sm:text-sm text-gray-300 border-t border-gray-800/60 pt-3 leading-relaxed">
+                        El esquirolaje es la sustitución ilegal de trabajadores en huelga por personal externo o reasignando tareas de forma irregular. <strong>Está prohibido por ley.</strong> Documenta los hechos y repórtalos inmediatamente a CGT BCN1.
+                    </div>
+                </div>
+
+                <!-- FAQ 7 -->
+                <div class="faq-item bg-gray-900 border border-gray-800 rounded-xl overflow-hidden transition-colors">
+                    <button class="w-full p-4 text-left font-semibold text-white flex justify-between items-center focus:outline-none text-sm sm:text-base gap-2 hover:text-red-400 transition-colors" onclick="toggleFaq(this)">
+                        <span>7. ¿Tengo derecho a participar en piquetes informativos?</span>
+                        <i class="fa-solid fa-chevron-down text-red-500 transition-transform flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer hidden px-4 pb-4 text-xs sm:text-sm text-gray-300 border-t border-gray-800/60 pt-3 leading-relaxed">
+                        <strong>Sí.</strong> La ley reconoce el derecho a formar piquetes informativos pacíficos en los accesos del centro de trabajo para informar a los compañeros y recabar apoyo a la huelga.
+                    </div>
+                </div>
+
+                <!-- FAQ 8 -->
+                <div class="faq-item bg-gray-900 border border-gray-800 rounded-xl overflow-hidden transition-colors">
+                    <button class="w-full p-4 text-left font-semibold text-white flex justify-between items-center focus:outline-none text-sm sm:text-base gap-2 hover:text-red-400 transition-colors" onclick="toggleFaq(this)">
+                        <span>8. ¿Me pueden quitar el plus de asistencia o incentivos enteros por un día de huelga?</span>
+                        <i class="fa-solid fa-chevron-down text-red-500 transition-transform flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer hidden px-4 pb-4 text-xs sm:text-sm text-gray-300 border-t border-gray-800/60 pt-3 leading-relaxed">
+                        No de forma desproporcionada. Los complementos solo pueden descontarse en su parte estrictamente proporcional al día no trabajado. Quitar un plus completo por ejercer un derecho fundamental es ilegal.
+                    </div>
+                </div>
+
+                <!-- FAQ 9 -->
+                <div class="faq-item bg-gray-900 border border-gray-800 rounded-xl overflow-hidden transition-colors">
+                    <button class="w-full p-4 text-left font-semibold text-white flex justify-between items-center focus:outline-none text-sm sm:text-base gap-2 hover:text-red-400 transition-colors" onclick="toggleFaq(this)">
+                        <span>9. ¿Qué pasa si me asignan servicios mínimos en BCN1?</span>
+                        <i class="fa-solid fa-chevron-down text-red-500 transition-transform flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer hidden px-4 pb-4 text-xs sm:text-sm text-gray-300 border-t border-gray-800/60 pt-3 leading-relaxed">
+                        Los servicios mínimos deben estar justificados por decreto gubernativo y notificados por escrito de forma individual. Si tienes dudas sobre si te corresponden o si son abusivos, contacta urgente con el sindicato en hola@cgtbcn1.org.
+                    </div>
+                </div>
+
+                <!-- FAQ 10 -->
+                <div class="faq-item bg-gray-900 border border-gray-800 rounded-xl overflow-hidden transition-colors">
+                    <button class="w-full p-4 text-left font-semibold text-white flex justify-between items-center focus:outline-none text-sm sm:text-base gap-2 hover:text-red-400 transition-colors" onclick="toggleFaq(this)">
+                        <span>10. ¿Pierdo días de vacaciones o antigüedad por hacer huelga?</span>
+                        <i class="fa-solid fa-chevron-down text-red-500 transition-transform flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer hidden px-4 pb-4 text-xs sm:text-sm text-gray-300 border-t border-gray-800/60 pt-3 leading-relaxed">
+                        <strong>No.</strong> La huelga suspende temporalmente la obligación de trabajar y remunerar ese día, pero no reduce los días de vacaciones anuales ni afecta negativamente al cómputo de tu antigüedad en Amazon.
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -344,7 +439,7 @@
         <p>Sección Sindical CGT Amazon BCN1 (El Prat de Llobregat, Barcelona) | <a href="mailto:hola@cgtbcn1.org" class="text-red-400 underline">hola@cgtbcn1.org</a></p>
     </footer>
 
-    <!-- JavaScript Corregido y Preciso -->
+    <!-- JavaScript para Acordeón, Buscador de FAQs y Cálculo -->
     <script>
         function toggleFaq(button) {
             const answer = button.nextElementSibling;
@@ -354,6 +449,20 @@
                 icon.classList.toggle('rotate-180');
             }
         }
+
+        // Buscador instantáneo en las FAQs
+        document.getElementById('faqSearchInput').addEventListener('input', function(e) {
+            const term = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.faq-item');
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if(text.includes(term)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
 
         function calculateDiscount() {
             const sbaInput = parseFloat(document.getElementById('sbaInput').value) || 0;
@@ -380,32 +489,16 @@
                 return;
             }
 
-            // 1. Proporción de contrato limpia según horas semanales (Ej: 30h / 40h = 0.75)
             const hoursRatio = Math.min(weeklyHours / 40, 1);
             const actualSbaProportional = sbaInput * hoursRatio;
-
-            // 2. Salario bruto mensual medio (SBA / 12)
             const monthlyGross = actualSbaProportional / 12;
-
-            // 3. Días laborables medios al mes ponderados a la jornada real (~21.66 días a 40h)
             const avgWorkingDaysPerMonth = 21.66;
-
-            // 4. Coste diario base de la jornada laborable pura
             const baseDailyCost = monthlyGross / avgWorkingDaysPerMonth;
-
-            // 5. Coeficiente del descanso semanal según la semana de huelga (7 / días trabajados)
             const restCoefficient = 7 / daysWorkedInStrikeWeek;
-
-            // 6. Coste diario real incluyendo el descanso no generado
             const actualDailyCostWithRest = baseDailyCost * restCoefficient;
-
-            // 7. Descuento total acumulado por los días de huelga
             const totalDiscount = actualDailyCostWithRest * strikeDays;
-
-            // 8. Impacto porcentual real en la nómina de ese mes
             const netPercent = (totalDiscount / monthlyGross) * 100;
 
-            // Renderizado en pantalla con formato impecable
             totalDiscountDisplay.textContent = totalDiscount.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
             sbaProportionalDisplay.textContent = actualSbaProportional.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
             dailyCostDisplay.textContent = actualDailyCostWithRest.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' € / día';
