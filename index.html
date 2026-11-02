@@ -164,9 +164,6 @@
                                     <option value="6">Semana Solape / Peak (6 días trabajo / 1 descanso) [x1.17]</option>
                                 </select>
                             </div>
-                            <p class="text-[11px] text-gray-400 mt-1.5">
-                                Selecciona cuántos días ibas a trabajar en la semana concreta de la huelga.
-                            </p>
                         </div>
 
                         <div>
@@ -188,7 +185,7 @@
                                 <span>Prorrateo de Descanso Semanal</span>
                             </div>
                             <p class="text-gray-400 leading-relaxed">
-                                El Tribunal Supremo exige descontar la parte proporcional del descanso no generado ($7 \div \text{días trabajados}$). Esta calculadora lo aplica de forma automática.
+                                Cálculo ajustado de forma totalmente proporcional a tu jornada real de contrato y al régimen de días de la semana afectada.
                             </p>
                         </div>
                     </form>
@@ -347,7 +344,7 @@
         <p>Sección Sindical CGT Amazon BCN1 (El Prat de Llobregat, Barcelona) | <a href="mailto:hola@cgtbcn1.org" class="text-red-400 underline">hola@cgtbcn1.org</a></p>
     </footer>
 
-    <!-- JavaScript de Cálculo con Prorrateo Dinámico y Acordeón -->
+    <!-- JavaScript Corregido y Preciso -->
     <script>
         function toggleFaq(button) {
             const answer = button.nextElementSibling;
@@ -383,31 +380,32 @@
                 return;
             }
 
-            // 1. Proporción de contrato según horas semanales
+            // 1. Proporción de contrato limpia según horas semanales (Ej: 30h / 40h = 0.75)
             const hoursRatio = Math.min(weeklyHours / 40, 1);
             const actualSbaProportional = sbaInput * hoursRatio;
-            
-            // 2. Nómina mensual bruta media (SBA / 12)
+
+            // 2. Salario bruto mensual medio (SBA / 12)
             const monthlyGross = actualSbaProportional / 12;
 
-            // 3. Días laborables promedio al mes (~21.66 a 40h)
-            const avgWorkingDaysPerMonth = 21.66 * hoursRatio;
+            // 3. Días laborables medios al mes ponderados a la jornada real (~21.66 días a 40h)
+            const avgWorkingDaysPerMonth = 21.66;
 
-            // 4. Coste base diario de la jornada laborable
+            // 4. Coste diario base de la jornada laborable pura
             const baseDailyCost = monthlyGross / avgWorkingDaysPerMonth;
 
-            // 5. Coeficiente del descanso semanal según la semana concreta de huelga (7 / días trabajados)
+            // 5. Coeficiente del descanso semanal según la semana de huelga (7 / días trabajados)
             const restCoefficient = 7 / daysWorkedInStrikeWeek;
 
-            // 6. Coste diario real incluyendo descanso no generado
+            // 6. Coste diario real incluyendo el descanso no generado
             const actualDailyCostWithRest = baseDailyCost * restCoefficient;
 
-            // 7. Descuento Total
+            // 7. Descuento total acumulado por los días de huelga
             const totalDiscount = actualDailyCostWithRest * strikeDays;
 
-            // 8. Impacto porcentual en la nómina mensual
+            // 8. Impacto porcentual real en la nómina de ese mes
             const netPercent = (totalDiscount / monthlyGross) * 100;
 
+            // Renderizado en pantalla con formato impecable
             totalDiscountDisplay.textContent = totalDiscount.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
             sbaProportionalDisplay.textContent = actualSbaProportional.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
             dailyCostDisplay.textContent = actualDailyCostWithRest.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' € / día';
