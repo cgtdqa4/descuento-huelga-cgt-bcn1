@@ -479,45 +479,56 @@
         const hoursTagDisplay = document.getElementById('hoursTagDisplay');
 
         function calculateDiscount() {
-            const sbaFullTime = parseFloat(sbaInput.value) || 0;
-            const weeklyHours = parseFloat(weeklyHoursInput.value) || 0;
-            const days = parseInt(strikeDaysInput.value) || 0;
+    const sbaFullTime = parseFloat(sbaInput.value) || 0;
+    const weeklyHours = parseFloat(weeklyHoursInput.value) || 0;
+    const days = parseInt(strikeDaysInput.value) || 0;
 
-            if (sbaFullTime <= 0 || weeklyHours <= 0 || days <= 0) {
-                totalDiscountDisplay.textContent = '0,00 €';
-                sbaProportionalDisplay.textContent = '0,00 €';
-                dailyCostDisplay.textContent = '0,00 €';
-                sbaBaseDisplay.textContent = `${sbaFullTime.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`;
-                netPercentDisplay.textContent = '0,00%';
-                hoursTagDisplay.textContent = `${weeklyHours}h`;
-                daysSubtext.textContent = 'Introduce tus datos para calcular';
-                return;
-            }
+    if (sbaFullTime <= 0 || weeklyHours <= 0 || days <= 0) {
+        totalDiscountDisplay.textContent = '0,00 €';
+        sbaProportionalDisplay.textContent = '0,00 €';
+        dailyCostDisplay.textContent = '0,00 €';
+        sbaBaseDisplay.textContent = `${sbaFullTime.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`;
+        netPercentDisplay.textContent = '0,00%';
+        hoursTagDisplay.textContent = `${weeklyHours}h`;
+        daysSubtext.textContent = 'Introduce tus datos para calcular';
+        return;
+    }
 
-            // 1. Proporción de horas (Ej: 24.5 / 40 = 0.6125)
-            const hoursRatio = Math.min(weeklyHours / 40, 1);
+    // 1. Proporción de horas según jornada contratada (Ej: 24.5 / 40 = 0.6125)
+    const hoursRatio = Math.min(weeklyHours / 40, 1);
 
-            // 2. Salario Bruto Anual REAL según horas contratadas
-            const actualSbaProportional = sbaFullTime * hoursRatio;
+    // 2. Salario Bruto Anual REAL según horas contratadas
+    const actualSbaProportional = sbaFullTime * hoursRatio;
 
-            // 3. Descuento por día basado en el SBA real de la jornada contratada (SBA_real / 365)
-            const actualDailyCost = actualSbaProportional / 365;
-            const totalDiscount = actualDailyCost * days;
+    // 3. Salario mensual bruto equivalente (SBA / 12)
+    const monthlyGross = actualSbaProportional / 12;
 
-            // 4. Salario mensual bruto real de la persona (SBA_real / 12)
-            const actualMonthlyGross = actualSbaProportional / 12;
-            const impactPercentage = (totalDiscount / actualMonthlyGross) * 100;
+    // 4. Cálculo de días laborables promedio al mes (~21.66 días de trabajo efectivo)
+    const avgWorkingDaysPerMonth = 21.66;
 
-            // Renderizado interactivo
-            totalDiscountDisplay.textContent = `${totalDiscount.toFixed(2)} €`;
-            sbaProportionalDisplay.textContent = `${actualSbaProportional.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`;
-            dailyCostDisplay.textContent = `${actualDailyCost.toFixed(2)} €`;
-            sbaBaseDisplay.textContent = `${sbaFullTime.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`;
-            
-            hoursTagDisplay.textContent = `${weeklyHours}h`;
-            netPercentDisplay.textContent = `~${impactPercentage.toFixed(1)}% de tu nómina mensual`;
-            daysSubtext.textContent = `Para ${days} jornada(s) de huelga (${days} × ${actualDailyCost.toFixed(2)}€)`;
-        }
+    // 5. Coste del día laborable base
+    const baseDailyCost = monthlyGross / avgWorkingDaysPerMonth;
+
+    // 6. Aplicación del prorrateo del descanso semanal (Factor 1.4: Día laborable + Proporción de libranza)
+    // Se suma la parte proporcional del descanso no generado por faltar esa jornada
+    const actualDailyCostWithRest = baseDailyCost * 1.4;
+
+    // 7. Descuento Total acumulado
+    const totalDiscount = actualDailyCostWithRest * days;
+
+    // 8. Impacto porcentual en la nómina bruta de ese mes
+    const impactPercentage = (totalDiscount / monthlyGross) * 100;
+
+    // Renderizado en pantalla
+    totalDiscountDisplay.textContent = `${totalDiscount.toFixed(2)} €`;
+    sbaProportionalDisplay.textContent = `${actualSbaProportional.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`;
+    dailyCostDisplay.textContent = `${actualDailyCostWithRest.toFixed(2)} €`;
+    sbaBaseDisplay.textContent = `${sbaFullTime.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`;
+    
+    hoursTagDisplay.textContent = `${weeklyHours}h`;
+    netPercentDisplay.textContent = `~${impactPercentage.toFixed(1)}% de tu nómina mensual`;
+    daysSubtext.textContent = `Para ${days} jornada(s) de huelga (incluye descanso semanal no generado)`;
+}
 
         // Event listeners para actualizar al instante
         sbaInput.addEventListener('input', calculateDiscount);
